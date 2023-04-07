@@ -1,7 +1,7 @@
 # <p align="center">🔑 **Password Generator** 🔑</p>
 
 ## 📄 **Description**
-    A password generator is a tool that creates strong and secure passwords automatically. It can generate passwords combining different letters, numbers and symbols in the range from 1 to 50 characters. The benefits of using a password generator are many. Firstly, it can generate passwords that are nearly impossible to guess or crack, making it more difficult for hackers to access your accounts. Secondly, it can save time by automatically generating passwords for you, eliminating the need to come up with your own password. Lastly, password generators can help you maintain good password hygiene by generating unique passwords for each account, which reduces the risk of password reuse.
+A password generator is a tool that creates strong and secure passwords automatically. It can generate passwords combining different letters, numbers and symbols in the range from 1 to 50 characters. The benefits of using a password generator are many. Firstly, it can generate passwords that are nearly impossible to guess or crack, making it more difficult for hackers to access your accounts. Secondly, it can save time by automatically generating passwords for you, eliminating the need to come up with your own password. Lastly, password generators can help you maintain good password hygiene by generating unique passwords for each account, which reduces the risk of password reuse.
 
 ## 📕 **Prerequisites**
 - [Visual Studio](https://visualstudio.microsoft.com)
