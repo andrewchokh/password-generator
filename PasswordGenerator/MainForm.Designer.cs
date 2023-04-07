@@ -56,9 +56,12 @@
             trkLength.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             trkLength.Location = new Point(12, 89);
             trkLength.Maximum = 50;
+            trkLength.Minimum = 1;
             trkLength.Name = "trkLength";
             trkLength.Size = new Size(320, 45);
             trkLength.TabIndex = 1;
+            trkLength.Value = 1;
+            trkLength.Scroll += trkLength_Scroll;
             // 
             // lblLength
             // 
@@ -124,6 +127,7 @@
             btnGenerate.TabIndex = 12;
             btnGenerate.Text = "Generate";
             btnGenerate.UseVisualStyleBackColor = true;
+            btnGenerate.Click += btnGenerate_Click;
             // 
             // numLength
             // 
@@ -136,6 +140,7 @@
             numLength.Size = new Size(45, 25);
             numLength.TabIndex = 15;
             numLength.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numLength.ValueChanged += numLength_ValueChanged;
             // 
             // MainForm
             // 
