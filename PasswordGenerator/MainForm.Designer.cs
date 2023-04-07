@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             txtPassword = new TextBox();
             trkLength = new TrackBar();
             lblLength = new Label();
@@ -37,6 +38,7 @@
             chkNumbers = new CheckBox();
             btnGenerate = new Button();
             numLength = new NumericUpDown();
+            chkExcluseIdentical = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)trkLength).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLength).BeginInit();
             SuspendLayout();
@@ -60,7 +62,7 @@
             trkLength.Name = "trkLength";
             trkLength.Size = new Size(320, 45);
             trkLength.TabIndex = 1;
-            trkLength.Value = 1;
+            trkLength.Value = 16;
             trkLength.Scroll += trkLength_Scroll;
             // 
             // lblLength
@@ -121,7 +123,7 @@
             // 
             btnGenerate.Anchor = AnchorStyles.Bottom;
             btnGenerate.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnGenerate.Location = new Point(140, 259);
+            btnGenerate.Location = new Point(140, 289);
             btnGenerate.Name = "btnGenerate";
             btnGenerate.Size = new Size(120, 30);
             btnGenerate.TabIndex = 12;
@@ -139,14 +141,26 @@
             numLength.Name = "numLength";
             numLength.Size = new Size(45, 25);
             numLength.TabIndex = 15;
-            numLength.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numLength.Value = new decimal(new int[] { 16, 0, 0, 0 });
             numLength.ValueChanged += numLength_ValueChanged;
+            // 
+            // chkExcluseIdentical
+            // 
+            chkExcluseIdentical.AutoSize = true;
+            chkExcluseIdentical.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            chkExcluseIdentical.Location = new Point(12, 248);
+            chkExcluseIdentical.Name = "chkExcluseIdentical";
+            chkExcluseIdentical.Size = new Size(267, 21);
+            chkExcluseIdentical.TabIndex = 16;
+            chkExcluseIdentical.Text = "Excluse identical characters (e. g. f6/2D>)";
+            chkExcluseIdentical.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 301);
+            ClientSize = new Size(394, 331);
+            Controls.Add(chkExcluseIdentical);
             Controls.Add(numLength);
             Controls.Add(btnGenerate);
             Controls.Add(chkNumbers);
@@ -157,6 +171,7 @@
             Controls.Add(trkLength);
             Controls.Add(txtPassword);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Password generetor";
@@ -177,5 +192,6 @@
         private CheckBox chkNumbers;
         private Button btnGenerate;
         private NumericUpDown numLength;
+        private CheckBox chkExcluseIdentical;
     }
 }

@@ -32,48 +32,50 @@ namespace PasswordGenerator
             InitializeComponent();
         }
 
-        private string GeneratePassword()
+        private string GetLetter()
         {
-            string password = string.Empty;
+            if (!chkLowercase.Checked && !chkUppercase.Checked)
+                return string.Empty;
 
-            for (int i = 0; i < trkLength.Value; i++)
+            Random random = new Random();
+            string letter = letters[random.Next(letters.Length)].ToString();
+
+            if (chkLowercase.Checked && !chkUppercase.Checked)
             {
-                string nextItem = string.Empty;
-                Random random = new Random();
+                return letter.ToLower();
+            }
+            else if (!chkLowercase.Checked && chkUppercase.Checked)
+                return letter.ToUpper();
 
-                switch (random.Next(3))
-                {
-                    case 0:
-                        nextItem = letters[random.Next(letters.Length)].ToString();
-                        break;
-                    case 1:
-                        nextItem = chkNumbers.Checked ?
-                            numbers[random.Next(numbers.Length)].ToString() :
-                            letters[random.Next(letters.Length)].ToString();
-                        break;
-                    case 2:
-                        nextItem = chkSymbols.Checked ?
-                            symbols[random.Next(symbols.Length)].ToString() :
-                            letters[random.Next(letters.Length)].ToString();
-                        break;
-                }
-
-                switch (random.Next(2))
-                {
-                    case 0:
-                        nextItem = chkLowercase.Checked ?
-                            nextItem.ToString().ToLower() : nextItem;
-                        break;
-                    case 1:
-                        nextItem = chkUppercase.Checked ?
-                            nextItem.ToString().ToUpper() : nextItem;
-                        break;
-                }
-
-                password += nextItem;
+            switch (random.Next(2))
+            {
+                case 0:
+                    return letter.ToLower();
+                case 1:
+                    return letter.ToUpper();
             }
 
-            return password;
+            throw new ArgumentNullException();
+        }
+
+        private string GetNumber()
+        {
+            if (!chkNumbers.Checked)
+                return string.Empty;
+
+            Random random = new Random();
+
+            return numbers[random.Next(numbers.Length)].ToString();
+        }
+
+        private string GetSymbol()
+        {
+            if (!chkSymbols.Checked)
+                return string.Empty;
+
+            Random random = new Random();
+
+            return symbols[random.Next(symbols.Length)].ToString();
         }
 
         private void trkLength_Scroll(object sender, EventArgs e)
@@ -88,7 +90,56 @@ namespace PasswordGenerator
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            txtPassword.Text = GeneratePassword();
+            if (!chkNumbers.Checked &&
+                !chkSymbols.Checked &&
+                !chkLowercase.Checked &&
+                !chkUppercase.Checked)
+            {
+                MessageBox.Show(this, "The password is empty!", "An error has occured!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string password = string.Empty;
+            int attemts = 100;
+
+            for (int i = 0; i < trkLength.Value; i++)
+            {
+                if (attemts == 0)
+                {
+                    MessageBox.Show(this, "Timed out! Try again.", "An error has occured!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string nextItem = string.Empty;
+                Random random = new Random();
+
+                switch (random.Next(3))
+                {
+                    case 0:
+                        nextItem = GetLetter();
+                        break;
+                    case 1:
+                        nextItem = GetNumber();
+                        break;
+                    case 2:
+                        nextItem = GetSymbol();
+                        break;
+                }
+
+                if (string.IsNullOrEmpty(nextItem) ||
+                    (chkExcluseIdentical.Checked &&
+                    password.Contains(nextItem)))
+                {
+                    attemts--;
+                    i--;
+                }
+                else
+                    password += nextItem;
+            }
+
+            txtPassword.Text = password;
         }
     }
 }
