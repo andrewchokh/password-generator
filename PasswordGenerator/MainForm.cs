@@ -1,36 +1,26 @@
+using Newtonsoft.Json;
+
 namespace PasswordGenerator
 {
     public partial class MainForm : Form
     {
-        readonly char[] letters =
-        {
-            'a', 'b', 'c', 'd', 'e',
-            'f', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o',
-            'p', 'q', 'r', 's', 't',
-            'u', 'v', 'w', 'x', 'y',
-            'z',
-        };
-
-        readonly char[] numbers =
-        {
-            '1', '2', '3', '4', '5',
-            '6', '7', '8', '9', '0',
-        };
-
-        readonly char[] symbols =
-        {
-            '@', '#', '$', '!', '?',
-            '/', '\\', '"', '\'', '[',
-            ']', '{', '}', ';', ':',
-            '&', '^', '*', '+', '-',
-            '=', '_', '.', '<', '>',
-            ')', '(', '`', '|', ','
-        };
+        ConfigJSON configJson;
 
         public MainForm()
         {
             InitializeComponent();
+
+            configJson = LoadJson("Data/config.json");
+        }
+
+        private ConfigJSON LoadJson(string filePath)
+        {
+            var json = string.Empty;
+
+            using (var sr = new StreamReader(filePath))
+                json = sr.ReadToEnd();
+
+            return JsonConvert.DeserializeObject<ConfigJSON>(json);
         }
 
         private string GetLetter()
@@ -39,7 +29,7 @@ namespace PasswordGenerator
                 return string.Empty;
 
             Random random = new Random();
-            string letter = letters[random.Next(letters.Length)].ToString();
+            string letter = configJson.Letters[random.Next(configJson.Letters.Length)];
 
             if (chkLowercase.Checked && !chkUppercase.Checked)
             {
@@ -66,7 +56,7 @@ namespace PasswordGenerator
 
             Random random = new Random();
 
-            return numbers[random.Next(numbers.Length)].ToString();
+            return configJson.Numbers[random.Next(configJson.Numbers.Length)];
         }
 
         private string GetSymbol()
@@ -76,7 +66,7 @@ namespace PasswordGenerator
 
             Random random = new Random();
 
-            return symbols[random.Next(symbols.Length)].ToString();
+            return configJson.Symbols[random.Next(configJson.Symbols.Length)];
         }
 
         private void trkLength_Scroll(object sender, EventArgs e)
@@ -102,11 +92,11 @@ namespace PasswordGenerator
             }
 
             string password = string.Empty;
-            int attemts = 100;
+            int attempts = configJson.Attempts;
 
             for (int i = 0; i < trkLength.Value; i++)
             {
-                if (attemts == 0)
+                if (attempts == 0)
                 {
                     MessageBox.Show(this, "Timed out! Try again.", "An error has occured!",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -133,7 +123,7 @@ namespace PasswordGenerator
                     (chkExcluseIdentical.Checked &&
                     password.Contains(nextItem)))
                 {
-                    attemts--;
+                    attempts--;
                     i--;
                 }
                 else
