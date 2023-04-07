@@ -9,8 +9,6 @@ A password generator is a tool that creates strong and secure passwords automati
 
 ## 💻 **Supported Platforms**
 - Windows 10/11
-- MacOS
-- Linux OS
 
 ## 📷 **Screenshots**
 <p align="center"><img src="https://user-images.githubusercontent.com/88233242/230658881-0225afe3-ab86-46ec-b115-fc8d099992e1.png" /></p>
