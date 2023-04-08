@@ -1,19 +1,23 @@
-# <p align="center">🔑 **Password Generator** 🔑</p>
+<div align="center">
 
-## 📄 **Description**
-A password generator is a tool that creates strong and secure passwords automatically. It can generate passwords combining different letters, numbers and symbols in the range from 1 to 50 characters. The benefits of using a password generator are many. Firstly, it can generate passwords that are nearly impossible to guess or crack, making it more difficult for hackers to access your accounts. Secondly, it can save time by automatically generating passwords for you, eliminating the need to come up with your own password. Lastly, password generators can help you maintain good password hygiene by generating unique passwords for each account, which reduces the risk of password reuse.
+# 🔑 **Password Generator** 🔑
+
+A password generator for creating strong and secure passwords automatically. It generates password combining different letters, numbers and symbols (specified in config) in the range from 1 to 50 characters.
+
+</div>
 
 ## 📕 **Prerequisites**
-- [Visual Studio](https://visualstudio.microsoft.com)
-- [.NET Core](https://dotnet.microsoft.com)
+- [Visual Studio 2022](https://visualstudio.microsoft.com)
+- [.NET Core 7.0](https://dotnet.microsoft.com)
+- [.NET Framework 4.8](https://dotnet.microsoft.com)
 
 ## 💻 **Supported Platforms**
-- Windows 10/11
+- Windows 7 / 8 / 8.1 / 10 / 11
 
-## 📷 **Screenshots**
+## ✔️ **Getting started**
+Download [the project](https://github.com/andrewchokh/password-generator.git), build it up in `Visual Studio` and run.
+
+## 📃 **How to use**
+When you start the program, you will see the main window. There you can generate passwords with different security levels. You can choose how long password will be, will there be numbers, symbols, choose lower- or uppper- cases, will there be identical characters.
+
 <p align="center"><img src="https://user-images.githubusercontent.com/88233242/230658881-0225afe3-ab86-46ec-b115-fc8d099992e1.png" /></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/88233242/230659124-387add4e-6159-4a0a-880e-3295cbc2e0bd.png" /></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/88233242/230659226-e950fb46-743b-4f23-8f02-b0fd4417ad46.png" /></p>
-
-## ▶ **How to run the project**
-Build the project in `Visual Studio` and launch it.
