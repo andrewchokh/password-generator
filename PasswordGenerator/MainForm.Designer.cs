@@ -150,9 +150,9 @@
             chkExcluseIdentical.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             chkExcluseIdentical.Location = new Point(12, 248);
             chkExcluseIdentical.Name = "chkExcluseIdentical";
-            chkExcluseIdentical.Size = new Size(267, 21);
+            chkExcluseIdentical.Size = new Size(269, 21);
             chkExcluseIdentical.TabIndex = 16;
-            chkExcluseIdentical.Text = "Excluse identical characters (e. g. f6/2D>)";
+            chkExcluseIdentical.Text = "Exclude identical characters (e. g. f6/2D>)";
             chkExcluseIdentical.UseVisualStyleBackColor = true;
             // 
             // MainForm
