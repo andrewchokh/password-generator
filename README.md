@@ -9,7 +9,6 @@ A password generator for creating strong and secure passwords automatically. It 
 ## 📕 **Prerequisites**
 - [Visual Studio 2022](https://visualstudio.microsoft.com)
 - [.NET Core 7.0](https://dotnet.microsoft.com)
-- [.NET Framework 4.8](https://dotnet.microsoft.com)
 
 ## 💻 **Supported Platforms**
 - Windows 7 / 8 / 8.1 / 10 / 11
