@@ -10,7 +10,17 @@ namespace PasswordGenerator
         {
             InitializeComponent();
 
-            configJson = LoadJson("Data/config.json");
+            string filePath = "Data/config.json";
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show(this, $"The file does not exists: {filePath}", "An error has occured!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+            configJson = LoadJson(filePath);
         }
 
         private ConfigJSON LoadJson(string filePath)
@@ -32,9 +42,7 @@ namespace PasswordGenerator
             string letter = configJson.Letters[random.Next(configJson.Letters.Length)];
 
             if (chkLowercase.Checked && !chkUppercase.Checked)
-            {
                 return letter.ToLower();
-            }
             else if (!chkLowercase.Checked && chkUppercase.Checked)
                 return letter.ToUpper();
 
